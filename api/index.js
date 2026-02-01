@@ -1,4 +1,5 @@
-const jsonServer = require('json-server');
+import jsonServer from 'json-server';
+
 const server = jsonServer.create();
 const router = jsonServer.router('db.json');
 const middlewares = jsonServer.defaults();
@@ -6,7 +7,6 @@ const middlewares = jsonServer.defaults();
 server.use(middlewares);
 server.use(router);
 
-// Export serverless function
-module.exports = (req, res) => {
+export default function handler(req, res) {
   server(req, res);
-};
+}
